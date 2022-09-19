@@ -1,6 +1,6 @@
 package com.gerardi.project.dto;
 
-import com.gerardi.project.entities.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 @Getter
@@ -10,9 +10,12 @@ import lombok.*;
 @Builder
 public class UserDTO {
 
-    private String name;
+    @JsonIgnore
+    private Integer id;
 
-    public UserDTO(User user) {
-        this.name = user.getName();
-    }
+    private String name;
+    private String email;
+
+    @JsonIgnore
+    private String password;
 }

@@ -16,12 +16,12 @@ public class UserService {
     private UserRepository userRepository;
 
     public List<UserDTO> findAll() {
-        return this.userRepository.findAll().stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
+        return this.userRepository.findAll().stream().map(x -> new UserDTO(x.getId(), x.getName(), x.getEmail(), x.getPassword())).collect(Collectors.toList());
     }
 
     public UserDTO findById(Integer id) {
         User user = this.userRepository.findById(id).get();
-        return new UserDTO(user);
+        return new UserDTO(user.getId(), user.getName(), user.getEmail(), user.getPassword());
     }
 
     public User insertUser(User user) {
